@@ -53,7 +53,7 @@ Screenshots
     :alt: Admin Panel
     :align: center
 
-.. image:: assets/img/ledger.pn
+.. image:: assets/img/ledger.png
     :alt: Borrowers Ledger
     :align: center
 

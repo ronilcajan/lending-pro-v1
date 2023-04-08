@@ -1,9 +1,9 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Sep 11, 2022 at 10:07 AM
+-- Host: localhost
+-- Generation Time: Apr 09, 2023 at 01:22 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -113,6 +113,7 @@ CREATE TABLE `guarantor` (
 
 CREATE TABLE `info` (
   `id` int(11) NOT NULL,
+  `bname` varchar(100) DEFAULT NULL,
   `name` varchar(50) DEFAULT NULL,
   `address` text DEFAULT NULL,
   `contact` varchar(20) DEFAULT NULL,
@@ -126,8 +127,8 @@ CREATE TABLE `info` (
 -- Dumping data for table `info`
 --
 
-INSERT INTO `info` (`id`, `name`, `address`, `contact`, `email`, `currency`, `logo`, `logo2`) VALUES
-(1, 'GK Microfinance', '10 West Drive Ave Apt 453 Kingstone Black West East Barker 875G3DF', '40 87 3454-5689', 'microfinancewest@gmail.com', 'P', 'e03f6e6efbf159a80701720e3d964b69.png', 'a010497657ec4687d438f2b5fb4478d5.png');
+INSERT INTO `info` (`id`, `bname`, `name`, `address`, `contact`, `email`, `currency`, `logo`, `logo2`) VALUES
+(1, 'Softwarezen Finance', 'Portal', 'PH', '40 87 3454-5689', 'loan@gmail.com', 'P', '399ea519e9dcb8639e02e0d641effb9d.png', 'b67e5152daea99d233200379e5428de7.png');
 
 -- --------------------------------------------------------
 
@@ -258,7 +259,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `ip_address`, `username`, `password`, `email`, `activation_selector`, `activation_code`, `forgotten_password_selector`, `forgotten_password_code`, `forgotten_password_time`, `remember_selector`, `remember_code`, `created_on`, `last_login`, `active`, `first_name`, `last_name`, `address`, `avatar`) VALUES
-(2, '::1', 'admin', '$2y$10$CcQpUCWQPRxBwxOhb6HJsOTTtDGAEpLTlNqWByVF5nmnII61UN6nG', 'cajanr02@gmail.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1628636671, 1662883240, 1, 'Admin', 'Nistration', 'PH', '81cb8d65a41192af7d318fcc3c8cca8c.png');
+(2, '::1', 'admin', '$2y$10$CcQpUCWQPRxBwxOhb6HJsOTTtDGAEpLTlNqWByVF5nmnII61UN6nG', 'cajanr02@gmail.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1628636671, 1680996072, 1, 'Admin', 'Nistration', 'PH', 'e8a3b001ab68f2e2d9f889772199b3ca.png');
 
 -- --------------------------------------------------------
 
@@ -277,7 +278,7 @@ CREATE TABLE `users_groups` (
 --
 
 INSERT INTO `users_groups` (`id`, `user_id`, `group_id`) VALUES
-(13, 2, 1);
+(19, 2, 1);
 
 --
 -- Indexes for dumped tables
@@ -380,13 +381,13 @@ ALTER TABLE `users_groups`
 -- AUTO_INCREMENT for table `attachments`
 --
 ALTER TABLE `attachments`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 
 --
 -- AUTO_INCREMENT for table `borrower`
 --
 ALTER TABLE `borrower`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=72;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=79;
 
 --
 -- AUTO_INCREMENT for table `groups`
@@ -404,7 +405,7 @@ ALTER TABLE `info`
 -- AUTO_INCREMENT for table `loan`
 --
 ALTER TABLE `loan`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=82;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=90;
 
 --
 -- AUTO_INCREMENT for table `loan_type`
@@ -416,13 +417,13 @@ ALTER TABLE `loan_type`
 -- AUTO_INCREMENT for table `login_attempts`
 --
 ALTER TABLE `login_attempts`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `payment`
 --
 ALTER TABLE `payment`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=501;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=534;
 
 --
 -- AUTO_INCREMENT for table `users`
@@ -434,7 +435,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `users_groups`
 --
 ALTER TABLE `users_groups`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- Constraints for dumped tables

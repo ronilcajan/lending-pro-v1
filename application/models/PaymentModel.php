@@ -36,16 +36,19 @@ class PaymentModel extends CI_Model
 
     public function reports()
     {
-        $this->db->select('*, loan.id as loan_id, SUM(payment.amount) as balance, payment.status as pay_stat');
-        $this->db->from('borrower');
-        $this->db->join('loan', 'loan.borrower_id=borrower.id');
-        $this->db->join('payment', 'loan.id=payment.loan_id');
-        $this->db->join('borrower_address', 'borrower.id=borrower_address.borrower_id');
-        $this->db->join('guarantor', 'borrower.id=guarantor.borrower_id');
-        $this->db->where('loan.status', 'Active');
-        $this->db->order_by('loan.id', 'ASC');
-        $this->db->group_by('loan.id');
-        $query = $this->db->get();
+        $sql1 = "SET sql_mode=(SELECT REPLACE(@@sql_mode,'ONLY_FULL_GROUP_BY',''));";
+        $this->db->query($sql1);
+
+        $sql = "SELECT *, loan.id as loan_id, SUM(payment.amount) as balance, payment.status as pay_stat
+        FROM borrower
+        INNER JOIN loan ON loan.borrower_id = borrower.id
+        INNER JOIN payment ON loan.id = payment.loan_id
+        INNER JOIN borrower_address ON borrower.id = borrower_address.borrower_id
+        INNER JOIN guarantor ON borrower.id = guarantor.borrower_id
+        WHERE loan.status = 'Active'
+        GROUP BY loan.id
+        ORDER BY loan.id ASC;";
+        $query = $this->db->query($sql);
         return $query->result_array();
     }
     public function due_date()
